@@ -12,22 +12,34 @@ services:
     depends_on:
       - db
       - redis
-    build: "."
+    build:
+      context: .
+      dockerfile: "./docker/app/Dockerfile"
     command: "bundle exec sidekiq"
     volumes:
       - "bundle_cache:/bundle"
       - ".:/app"
     env_file:
       - ".env"
-
   web:
-    build: "."
+    build:
+      context: .
+      dockerfile: "./docker/web/Dockerfile"
+    depends_on:
+      - app
+    ports:
+      - 8080:80
+
+  app:
+    build:
+      context: .
+      dockerfile: "./docker/app/Dockerfile"
     command: "bundle exec rails s -p 3000 -b '0.0.0.0'"
     depends_on:
       - db
       - redis
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     volumes:
       - "bundle_cache:/bundle"
       - ".:/app"
