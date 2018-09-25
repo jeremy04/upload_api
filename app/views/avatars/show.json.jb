@@ -1,0 +1,7 @@
+{
+  id: @avatar.id,
+  title: @avatar.title,
+  photo_data: @avatar.photo_data,
+  created_at: @avatar.created_at,
+  updated_at: @avatar.updated_at
+}

@@ -1,0 +1,8 @@
+@avatars.map do |avatar|
+  {
+    id: avatar.id,
+    title: avatar.title,
+    photo_data: avatar.photo_data,
+    url: avatar_url(avatar, format: :json)
+  }
+end
