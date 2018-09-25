@@ -1,7 +1,7 @@
 Run Docker
 
     docker-compose build
-    docker-compose run
+    docker-compose up
 
 Seperate tab/window:
 
